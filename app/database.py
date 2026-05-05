@@ -1,9 +1,8 @@
 from sqlmodel import create_engine
 from app.config import DATABASE_URL
-from sqlmodel import Field, Session, SQLModel, create_engine, select
+from sqlmodel import SQLModel, create_engine
 
-connect_args = {"check_same_thread": False}
-engine = create_engine(DATABASE_URL, echo=True, connect_args=connect_args)
+engine = create_engine(DATABASE_URL, echo=True)
 
 
 def create_tables():
