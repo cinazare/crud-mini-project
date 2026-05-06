@@ -1,10 +1,11 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Response
+from app.crud import test_function
 
 
 router = APIRouter(
-    prefix='/task'
+    prefix="/task"
 )
 
-@router.get('/test/')
+@router.get('/health/')
 def test():
-    pass
+    return {"message":"this is server working"}
