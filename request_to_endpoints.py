@@ -26,13 +26,13 @@ payload = {
 
 
 # print("----------------------------- GET ----------------------------------------")
-# task_id = "2"
+# task_id = "8"
 # url=f"http://localhost:8000/tasks/{task_id}" 
 # response = requests.get(
 #     url=url
 # )
 # print("Status:", response.status_code)
-# pprint(response.json())
+# pprint(response.text)
 # print("---------------------------------------------------------------------")
 
 
