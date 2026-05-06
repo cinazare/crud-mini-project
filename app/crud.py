@@ -20,10 +20,12 @@ def update(entity: SQLModel, _type, id: int, session: Session):
 
     if not db_entity:
         return None
+    
+    entity_dict = entity.model_dump().items()
 
-    db_entity.title = entity.title
-    db_entity.description = entity.description
-    db_entity.is_completed = entity.is_completed
+    for key, value in entity_dict:
+        if value != None:
+            setattr(db_entity, key, value)
 
     session.add(db_entity)
     session.commit()

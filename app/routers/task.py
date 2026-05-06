@@ -30,8 +30,8 @@ def get_task(task_id: int, session: Session = Depends(get_session)):
 @router.delete('/{task_id}')
 def delete_task(task_id: int, session: Session = Depends(get_session)):
     #validation
-    delete(task_id=task_id, session=session, _type=MODULE_TYPE)
-
+    delete(id=task_id, session=session, _type=MODULE_TYPE)
+    return "ok"
 
 @router.post('/')
 def create_task(task: Task, session: Session = Depends(get_session)):
@@ -41,7 +41,10 @@ def create_task(task: Task, session: Session = Depends(get_session)):
     return "ok"
 
 
-# @router.put('/{task_id}')
-# def update_task(task_id: int, session: Session = Depends(get_session)):
-#     #validation
-#     return update(id=task_id, _type=MODULE_TYPE, session=session, entity=Task)
+@router.patch('/{task_id}', response_class=Task)
+def update_task(task_id: int, task: Task ,session: Session = Depends(get_session)):
+    #validation
+    result = update(id=task_id, _type=MODULE_TYPE, session=session, entity=task)    
+    if result:
+        return result
+    
