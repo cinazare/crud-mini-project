@@ -8,4 +8,5 @@ class Task(SQLModel, table=True):
     title: str
     description: Optional[str] = None
     is_completed: bool = Field(default=False)
-    created_at: datetime = Field(default_factory=datetime.now())
+    created_at: datetime = Field(default_factory=datetime.now)
+
